@@ -17,6 +17,7 @@ namespace NzWalksAPI.Controllers
             this.regionRepository = regionRepository;
             this.mapper = mapper;
         }
+
         [HttpGet]
         public async Task<IActionResult> GetAllRegion()
         {
@@ -84,9 +85,8 @@ namespace NzWalksAPI.Controllers
             };
 
             return CreatedAtAction(nameof(GetRegionAsync), new { id = regionDto.Id }, regionDto);
-
-
         }
+
         [HttpDelete]
         [Route("{id:guid}")]
         public async Task<IActionResult> DeleteRegionAsync(Guid id)
@@ -110,13 +110,13 @@ namespace NzWalksAPI.Controllers
 
             return Ok(regionDto);
         }
+
         [HttpPut]
         [Route("{id:guid}")]
         public async Task<IActionResult> UpdateRegionAsych([FromRoute] Guid id, [FromBody] Dto.UpdateRegionRequest updateRegionRequest)
         {
             var updateRegion = new Region
             {
-
                 Area = updateRegionRequest.Area,
                 Code = updateRegionRequest.Code,
                 Lat = updateRegionRequest.Lat,
@@ -144,8 +144,4 @@ namespace NzWalksAPI.Controllers
             return Ok(regionDto);
         }
     }
-
-    
-
-    
 }
